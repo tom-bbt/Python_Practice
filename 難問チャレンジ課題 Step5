@@ -1,17 +1,22 @@
 #Step-5
 import win32com.client
+
 excel = win32com.client.Dispatch("Excel.Application")
 excel.Visible = True
+
 book = excel.Workbooks.Open("C:\\Users\\User\\Documents\\BBT Anaconda\\目黒区内の学童保育クラブ.xlsx")
 sheet = book.WorkSheets("印刷用")
 sheet.Select()
+
 startNum = int(input("開始番号を入力"))
 endNum = int(input("終了番号を入力"))
 myVal = startNum
+
 for i in range(endNum - startNum + 1):
     print(myVal)  
     sheet.Range("D2").Value = myVal
     myStr = str(myVal)
     myStr = myStr.zfill(3)
+    
     sheet.ExportAsFixedFormat(Type=0, Filename="C:\\Users\\User\\Documents\\BBT Anaconda\\" + myStr + ".pdf") 
     myVal += 1
