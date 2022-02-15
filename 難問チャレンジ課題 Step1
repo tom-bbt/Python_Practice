@@ -1,0 +1,6 @@
+import pandas as pd
+url = "https://data.bodik.jp/dataset/e776bc0a-e5dd-449b-a1c2-9d8f47d69a9d/resource/57f82dbf-e389-46aa-b0b9-b1164f619cbe/download/131105_after_school_care_program_club.csv"
+gakudo_hoiku = pd.read_csv(url, encoding="shift_jis")
+print(gakudo_hoiku)
+with pd.ExcelWriter("C:\\Users\\User\\Documents\\BBT Anaconda\\目黒区内の学童保育クラブ.xlsx") as writer:
+    gakudo_hoiku.to_excel(writer, sheet_name="学童保育クラブ一覧")
